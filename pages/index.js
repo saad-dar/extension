@@ -7,7 +7,6 @@ export default function Home() {
   const [response, setResponse] = useState(null);
   const [errorInfo, setErrorInfo] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [autority, setAutority] = useState(null);
 
   const getDomainInfo = async () => {
     try {
@@ -18,20 +17,6 @@ export default function Home() {
       const { data } = res;
       setLoading(false);
       setResponse(data);
-    } catch (error) {
-      setLoading(false);
-      setErrorInfo(error.response.data);
-    }
-  };
-  const getAutorityInfo = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get("api/autority/", {
-        params: { keyword },
-      });
-      const { data } = res;
-      setLoading(false);
-      setAutority(data);
     } catch (error) {
       setLoading(false);
       setErrorInfo(error.response.data);
@@ -50,7 +35,6 @@ export default function Home() {
         className="sm:mx-auto mt-20 justify-center sm:w-full sm:flex"
         onSubmit={(e) => {
           getDomainInfo();
-          getAutorityInfo();
           e.preventDefault();
           e.stopPropagation();
         }}
@@ -106,37 +90,37 @@ export default function Home() {
                   <tr>
                     <td className="px-4 py-4">Domain: {response['Domain Name']}</td>
                     <td className="border-l px-4 py-4">
-                      Target : {autority}
+                      Target : {response['target']}
                     </td>
                   </tr>
                   <tr>
                     <td className="px-4 py-4">Registrar: {response['Registrar']}</td>
                     <td className="border-l px-4 py-4 capitalize">
-                      Title : 
+                      Title : {response['title']}
                     </td>
                   </tr>
                   <tr>
                     <td className="px-4 py-4">Registrar URL: {response['Registrar URL']}</td>
                     <td className="border-l px-4 py-4 capitalize">
-                      DA_SCORE : 
+                      DA_SCORE : {response['da_score']}
                     </td>
                   </tr>
                   <tr>
                     <td className="px-4 py-4">Registrar WHOIS Server: {response['whois.registrarsafe.com']}</td>
                     <td className="border-l px-4 py-4">
-                      PA_SCORE : 
+                      PA_SCORE : {response['pa_score']}
                     </td>
                   </tr>
                   <tr>
                     <td className="px-4 py-4">Created Date: {response['Created Date']}</td>
                     <td className="border-l px-4 py-4">
-                      TOTAL_BACKLINK : 
+                      TOTAL_BACKLINK : {response['total_backlink']}
                     </td>
                   </tr>
                   <tr>
                     <td className="px-4 py-4">Expiry Date : {response['Expiry Date']}</td>
                     <td className="border-l px-4 py-4">
-                      SPAM_SCORE : 
+                      SPAM_SCORE : {response['spam_score']}
                     </td>
                   </tr>
                   <tr>
