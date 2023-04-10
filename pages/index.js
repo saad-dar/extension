@@ -126,13 +126,13 @@ export default function Home() {
                   <tr>
                     <td className="px-4 py-4">Registrar Contact Email: {response['Registrar Abuse Contact Email']}</td>
                     <td className="border-l px-4 py-4">
-                      {response.registrantCountry} ago
+                      
                     </td>
                   </tr>
                   <tr>
                     <td className="px-4 py-4">Registrar Contact Phone: {response['Registrar Abuse Contact Phone']}</td>
                     <td className="border-l px-4 py-4">
-                      {response.registrantCountry} ago
+                      
                     </td>
                   </tr>
                 </tbody>
