@@ -7,6 +7,7 @@ export default function Home() {
   const [response, setResponse] = useState(null);
   const [errorInfo, setErrorInfo] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [javaScriptComp, setJavaScriptComp] = useState([]);
 
   const getDomainInfo = async () => {
     try {
@@ -14,9 +15,14 @@ export default function Home() {
       const res = await axios.get("api/search/", {
         params: { keyword },
       });
+      const javaScriptCom = await axios.get("api/javaScript-vulnarable/", {
+        params: { keyword },
+      });
+      console.log(javaScriptCom);
       const { data } = res;
       setLoading(false);
       setResponse(data);
+      setJavaScriptComp(javaScriptCom);
     } catch (error) {
       setLoading(false);
       setErrorInfo(error.response.data);
@@ -42,7 +48,7 @@ export default function Home() {
         <input
           type="text"
           className="block w-1/3 rounded-sm px-5 py-3 text-base text-background font-semibold focus:outline-none focus:ring-2 focus:ring-active"
-          placeholder="Enter your keyword"
+          placeholder="Enter your website URL"
           onChange={(e) => {
             setKeyword(e.target.value);
             setResponse(null);
@@ -138,19 +144,19 @@ export default function Home() {
                 </tbody>
               </table>
               <div className="mt-10 text-center">
-                <p className="text-primary text-xs font-light">
-                  Made by RapidAPI DevRel Team -{" "}
-                  <a
-                    className="hover:text-active"
-                    href="https://github.com/RapidAPI/DevRel-Examples-External"
-                  >
-                    See more examples like this
-                  </a>
-                </p>
               </div>
             </div>
           )}
         </div>
+      )}
+      {(javaScriptComp.length) && (
+       <div className="mt-10 max-w-3xl w-full">
+        <h3 className="text-primary text-center text-xl">
+            The Vulnarable components on this {keyword} website is{" "}
+            {/* {javaScriptComp.map(comp => <div>{comp}</div>)} */}
+            {console.log(javaScriptComp.length)}
+          </h3>
+       </div> 
       )}
     </div>
   );
