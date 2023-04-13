@@ -1,0 +1,13 @@
+{
+    "name": "Chrome whois, IP/Domain reputation and vulnarable javaScript Extension",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "action": {
+      "default_title": "Next.js Browser Extension Demo",
+      "default_popup": "index.html"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "permissions": ["activeTab"]
+  }

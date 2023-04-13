@@ -30,12 +30,6 @@ export default function Home() {
   };
   return (
     <div className="flex flex-col md:px-12 px-0 relative bg-background font-open-sans items-center min-h-screen">
-      <h1 className="text-6xl text-active font-bold font-active mt-10">
-        Domain Search
-      </h1>
-      <h2 className="text-primary text-2xl mt-6">
-        Check information of any domain.
-      </h2>
 
       <form
         className="sm:mx-auto mt-20 justify-center sm:w-full sm:flex"
@@ -153,8 +147,7 @@ export default function Home() {
        <div className="mt-10 max-w-3xl w-full">
         <h3 className="text-primary text-center text-xl">
             The Vulnarable components on this {keyword} website is{" "}
-            {/* {javaScriptComp.map(comp => <div>{comp}</div>)} */}
-            {console.log(javaScriptComp.length)}
+            {javaScriptComp.map(comp => <div>{comp}</div>)}
           </h3>
        </div> 
       )}
